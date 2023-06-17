@@ -13,6 +13,9 @@ contract TheLastWatchHist is ERC721URIStorageUpgradeable {
   }
 
   function burn(uint256 tokenId) external {
+    address owner = ownerOf(tokenId);
+    require(owner == msg.sender, "TheLastWatchHist: only owner can burn this token");
+
     _burn(tokenId);
   }
 }
