@@ -3,8 +3,8 @@ pragma solidity ^0.8.19;
 import "openzeppelin/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol";
 
 contract TheLastWatchHist is ERC721URIStorageUpgradeable {
-  function initialize() external initializer {
-    __ERC721_init("TheLastWatchHist", "TLWH");
+  function initialize(string memory name, string memory symbol) external initializer {
+    __ERC721_init(name, symbol);
   }
 
   function mint(address to, uint256 tokenId, string memory tokenURI) external {
