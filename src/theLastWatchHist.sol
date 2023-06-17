@@ -1,8 +1,8 @@
 pragma solidity ^0.8.19;
 
-import "openzeppelin/token/ERC721/ERC721Upgradeable.sol";
+import "openzeppelin/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol";
 
-contract TheLastWatchHist is  ERC721Upgradeable {
+contract TheLastWatchHist is ERC721URIStorageUpgradeable {
   function initialize() public initializer {
     __ERC721_init("TheLastWatchHist", "TLWH");
   }
