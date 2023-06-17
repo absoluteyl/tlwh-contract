@@ -23,10 +23,16 @@ contract TheLastWatchHistTest is Test {
     assertEq(tLWH.symbol(), "TLWH");
   }
 
-  function testMint() public {
+  function testMintBurn() public {
+    // Mint
     tLWH.mint(user, 1, ipfsURL);
 
     assertEq(tLWH.ownerOf(1), user);
     assertEq(tLWH.tokenURI(1), ipfsURL);
+
+    // Burn
+    tLWH.burn(1);
+
+    assertEq(tLWH.balanceOf(user), 0);
   }
 }
