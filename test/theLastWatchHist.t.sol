@@ -31,6 +31,10 @@ contract TheLastWatchHistTest is Test {
     assertEq(tLWH.ownerOf(1), user);
     assertEq(tLWH.tokenURI(1), ipfsURL);
 
+    // Burn - only owner can burn
+    vm.expectRevert("TheLastWatchHist: only owner can burn this token");
+    tLWH.burn(1);
+
     vm.prank(user);
     tLWH.burn(1);
 
