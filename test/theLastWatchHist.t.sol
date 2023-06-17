@@ -25,12 +25,13 @@ contract TheLastWatchHistTest is Test {
 
   function testMintBurn() public {
     // Mint
-    tLWH.mint(user, 1, ipfsURL);
+    vm.prank(user);
+    tLWH.mint(1, ipfsURL);
 
     assertEq(tLWH.ownerOf(1), user);
     assertEq(tLWH.tokenURI(1), ipfsURL);
 
-    // Burn
+    vm.prank(user);
     tLWH.burn(1);
 
     assertEq(tLWH.balanceOf(user), 0);
