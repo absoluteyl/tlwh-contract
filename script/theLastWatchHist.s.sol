@@ -8,7 +8,7 @@ contract TheLastWatchHistScript is Script {
     vm.startBroadcast(vm.envUint("WALLET_PRIVATE"));
 
     TheLastWatchHist tLWH = new TheLastWatchHist();
-    tLWH.initialize();
+    tLWH.initialize("TheLastWatchHist", "TLWH");
 
     vm.stopBroadcast();
   }

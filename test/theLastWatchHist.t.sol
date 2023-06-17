@@ -11,7 +11,7 @@ contract TheLastWatchHistTest is Test {
 
   function setUp() public {
     tLWH = new TheLastWatchHist();
-    tLWH.initialize();
+    tLWH.initialize("TheLastWatchHist", "TLWH");
 
     user = makeAddr("user");
 
