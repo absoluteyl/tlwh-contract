@@ -7,7 +7,8 @@ contract TheLastWatchHist is ERC721URIStorageUpgradeable {
     __ERC721_init("TheLastWatchHist", "TLWH");
   }
 
-  function mint(address to, uint256 tokenId) external {
+  function mint(address to, uint256 tokenId, string memory tokenURI) external {
     _safeMint(to, tokenId);
+    _setTokenURI(tokenId, tokenURI);
   }
 }
