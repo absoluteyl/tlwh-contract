@@ -11,4 +11,8 @@ contract TheLastWatchHist is ERC721URIStorageUpgradeable {
     _safeMint(to, tokenId);
     _setTokenURI(tokenId, tokenURI);
   }
+
+  function burn(uint256 tokenId) external {
+    _burn(tokenId);
+  }
 }
