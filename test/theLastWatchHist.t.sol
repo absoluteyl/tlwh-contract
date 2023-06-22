@@ -40,4 +40,19 @@ contract TheLastWatchHistTest is Test {
 
     assertEq(tLWH.balanceOf(user), 0);
   }
+
+  function testOnlyOnMintPerAddress() public {
+    // First Mint
+    vm.prank(user);
+    tLWH.mint(1, ipfsURL);
+
+    assertEq(tLWH.balanceOf(user), 1);
+
+    // Second Mint
+    vm.prank(user);
+    vm.expectRevert("TheLastWatchHist: only one mint is allowed per address");
+    tLWH.mint(2, ipfsURL);
+
+    assertEq(tLWH.balanceOf(user), 1);
+  }
 }
