@@ -35,7 +35,6 @@ contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC
     return "https://ipfs.io/ipfs/";
   }
 
-  // The following functions are overrides required by Solidity to solve inheritance ambiguity
   function _beforeTokenTransfer(address from, address to, uint256 tokenId, uint256 batchSize)
     internal
     override(ERC721Upgradeable, ERC721EnumerableUpgradeable)
@@ -44,6 +43,7 @@ contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC
     super._beforeTokenTransfer(from, to, tokenId, batchSize);
   }
 
+  // The following functions are overrides required by Solidity to solve inheritance ambiguity
   function _burn(uint256 tokenId)
     internal
     override(ERC721Upgradeable, ERC721URIStorageUpgradeable)
