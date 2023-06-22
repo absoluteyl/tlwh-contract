@@ -7,17 +7,21 @@ contract TheLastWatchHistTest is Test {
   TheLastWatchHist public tLWH;
 
   address public user1;
+  address public user2;
   string  public ipfsHost;
   string  public ipfsId1;
+  string  public ipfsId2;
 
   function setUp() public {
     tLWH = new TheLastWatchHist();
     tLWH.initialize("TheLastWatchHist", "TLWH");
 
     user1 = makeAddr("user1");
+    user2 = makeAddr("user2");
 
     ipfsHost = "https://ipfs.io/ipfs/";
     ipfsId1 = "QmVBB9asE4uyhh4VLo2ai9sytcXVv5REGsQMrrMDqGi2J8";
+    ipfsId2 = "QmNmfAqjiQgdLJscpM3FufbaXY9QEqWZiWqDTbsrUjSKDR";
 
   }
 
