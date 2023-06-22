@@ -32,7 +32,7 @@ contract TheLastWatchHistTest is Test {
     assertEq(tLWH.tokenURI(1), ipfsURL);
 
     // Burn - only owner can burn
-    vm.expectRevert("TheLastWatchHist: only owner can burn this token");
+    vm.expectRevert("ERC721: caller is not token owner or approved");
     tLWH.burn(1);
 
     vm.prank(user);
