@@ -40,6 +40,7 @@ contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC
     internal
     override(ERC721Upgradeable, ERC721EnumerableUpgradeable)
   {
+    require(from == address(0) || to == address(0), "TheLastWatchHist: Token is soul-bound and not transferable");
     super._beforeTokenTransfer(from, to, tokenId, batchSize);
   }
 
