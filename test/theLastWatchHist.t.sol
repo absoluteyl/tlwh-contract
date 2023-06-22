@@ -48,7 +48,7 @@ contract TheLastWatchHistTest is Test {
     assertEq(tLWH.balanceOf(user1), 0);
   }
 
-  function testOnlyOnMintPerAddress() public {
+  function testOnlyOneMintPerAddress() public {
     // First Mint
     vm.prank(user1);
     tLWH.mint(ipfsId1);
