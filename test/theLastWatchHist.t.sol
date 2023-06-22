@@ -29,17 +29,17 @@ contract TheLastWatchHistTest is Test {
   function testMintBurn() public {
     // Mint
     vm.prank(user);
-    tLWH.mint(1, ipfsId);
+    tLWH.mint(ipfsId);
 
-    assertEq(tLWH.ownerOf(1), user);
-    assertEq(tLWH.tokenURI(1), string.concat(ipfsHost, ipfsId));
+    assertEq(tLWH.ownerOf(0), user);
+    assertEq(tLWH.tokenURI(0), string.concat(ipfsHost, ipfsId));
 
     // Burn - only owner can burn
     vm.expectRevert("ERC721: caller is not token owner or approved");
-    tLWH.burn(1);
+    tLWH.burn(0);
 
     vm.prank(user);
-    tLWH.burn(1);
+    tLWH.burn(0);
 
     assertEq(tLWH.balanceOf(user), 0);
   }
@@ -47,14 +47,14 @@ contract TheLastWatchHistTest is Test {
   function testOnlyOnMintPerAddress() public {
     // First Mint
     vm.prank(user);
-    tLWH.mint(1, ipfsId);
+    tLWH.mint(ipfsId);
 
     assertEq(tLWH.balanceOf(user), 1);
 
     // Second Mint
     vm.prank(user);
     vm.expectRevert("TheLastWatchHist: only one mint is allowed per address");
-    tLWH.mint(2, ipfsId);
+    tLWH.mint(ipfsId);
 
     assertEq(tLWH.balanceOf(user), 1);
   }
