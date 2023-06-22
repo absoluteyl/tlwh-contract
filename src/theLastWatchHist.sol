@@ -4,8 +4,13 @@ import "openzeppelin/token/ERC721/ERC721Upgradeable.sol";
 import "openzeppelin/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import "openzeppelin/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol";
 import "openzeppelin/token/ERC721/extensions/ERC721BurnableUpgradeable.sol";
+import "openzeppelin/utils/CountersUpgradeable.sol";
 
 contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, ERC721BurnableUpgradeable {
+  using CountersUpgradeable for CountersUpgradeable.Counter;
+
+  CountersUpgradeable.Counter private _tokenIdCounter;
+
   function initialize(string memory name, string memory symbol) external initializer {
     __ERC721_init(name, symbol);
     __ERC721Enumerable_init();
@@ -13,8 +18,11 @@ contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC
     __ERC721Burnable_init();
   }
 
-  function mint(uint256 _tokenId, string memory _tokenURI) external {
+  function mint(string memory _tokenURI) external {
     require(balanceOf(msg.sender) == 0, "TheLastWatchHist: only one mint is allowed per address");
+
+    uint256 _tokenId = _tokenIdCounter.current();
+    _tokenIdCounter.increment();
 
     _safeMint(msg.sender, _tokenId);
     _setTokenURI(_tokenId, _tokenURI);
