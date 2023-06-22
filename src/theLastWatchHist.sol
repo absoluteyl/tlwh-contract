@@ -8,6 +8,8 @@ contract TheLastWatchHist is ERC721URIStorageUpgradeable {
   }
 
   function mint(uint256 tokenId, string memory tokenURI) external {
+    require(balanceOf(msg.sender) == 0, "TheLastWatchHist: only one mint is allowed per address");
+
     _safeMint(msg.sender, tokenId);
     _setTokenURI(tokenId, tokenURI);
   }
