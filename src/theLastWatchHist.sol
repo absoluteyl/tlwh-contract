@@ -13,11 +13,11 @@ contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC
     __ERC721Burnable_init();
   }
 
-  function mint(uint256 tokenId, string memory tokenURI) external {
+  function mint(uint256 _tokenId, string memory _tokenURI) external {
     require(balanceOf(msg.sender) == 0, "TheLastWatchHist: only one mint is allowed per address");
 
-    _safeMint(msg.sender, tokenId);
-    _setTokenURI(tokenId, tokenURI);
+    _safeMint(msg.sender, _tokenId);
+    _setTokenURI(_tokenId, _tokenURI);
   }
 
   // The following functions are overrides required by Solidity to solve inheritance ambiguity
