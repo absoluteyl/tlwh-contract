@@ -62,4 +62,20 @@ contract TheLastWatchHistTest is Test {
 
     assertEq(tLWH.balanceOf(user1), 1);
   }
+
+  function testTokenIdAutoIncrement() public {
+    // User1 mints
+    vm.prank(user1);
+    tLWH.mint(ipfsId1);
+
+    assertEq(tLWH.ownerOf(0), user1);
+    assertEq(tLWH.tokenURI(0), string.concat(ipfsHost, ipfsId1));
+
+    // User2 mints
+    vm.prank(user2);
+    tLWH.mint(ipfsId2);
+
+    assertEq(tLWH.ownerOf(1), user2);
+    assertEq(tLWH.tokenURI(1), string.concat(ipfsHost, ipfsId2));
+  }
 }
