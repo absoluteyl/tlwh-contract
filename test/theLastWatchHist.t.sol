@@ -8,7 +8,7 @@ contract TheLastWatchHistTest is Test {
 
   address public user1;
   string  public ipfsHost;
-  string  public ipfsId;
+  string  public ipfsId1;
 
   function setUp() public {
     tLWH = new TheLastWatchHist();
@@ -17,7 +17,7 @@ contract TheLastWatchHistTest is Test {
     user1 = makeAddr("user1");
 
     ipfsHost = "https://ipfs.io/ipfs/";
-    ipfsId = "QmVBB9asE4uyhh4VLo2ai9sytcXVv5REGsQMrrMDqGi2J8";
+    ipfsId1 = "QmVBB9asE4uyhh4VLo2ai9sytcXVv5REGsQMrrMDqGi2J8";
 
   }
 
@@ -29,10 +29,10 @@ contract TheLastWatchHistTest is Test {
   function testMintBurn() public {
     // Mint
     vm.prank(user1);
-    tLWH.mint(ipfsId);
+    tLWH.mint(ipfsId1);
 
     assertEq(tLWH.ownerOf(0), user1);
-    assertEq(tLWH.tokenURI(0), string.concat(ipfsHost, ipfsId));
+    assertEq(tLWH.tokenURI(0), string.concat(ipfsHost, ipfsId1));
 
     // Burn - only owner can burn
     vm.expectRevert("ERC721: caller is not token owner or approved");
@@ -47,14 +47,14 @@ contract TheLastWatchHistTest is Test {
   function testOnlyOnMintPerAddress() public {
     // First Mint
     vm.prank(user1);
-    tLWH.mint(ipfsId);
+    tLWH.mint(ipfsId1);
 
     assertEq(tLWH.balanceOf(user1), 1);
 
     // Second Mint
     vm.prank(user1);
     vm.expectRevert("TheLastWatchHist: only one mint is allowed per address");
-    tLWH.mint(ipfsId);
+    tLWH.mint(ipfsId1);
 
     assertEq(tLWH.balanceOf(user1), 1);
   }
