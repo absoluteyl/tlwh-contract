@@ -78,4 +78,20 @@ contract TheLastWatchHistTest is Test {
     assertEq(tLWH.ownerOf(1), user2);
     assertEq(tLWH.tokenURI(1), string.concat(ipfsHost, ipfsId2));
   }
+
+  function testTransferNotAllowed() public {
+    // Mint
+    vm.prank(user1);
+    tLWH.mint(ipfsId1);
+
+    assertEq(tLWH.balanceOf(user1), 1);
+
+    // Transfer
+    vm.prank(user1);
+    vm.expectRevert("TheLastWatchHist: Token is soul-bound and not transferable");
+    tLWH.transferFrom(user1, user2, 0);
+
+    assertEq(tLWH.balanceOf(user1), 1);
+    assertEq(tLWH.balanceOf(user2), 0);
+  }
 }
