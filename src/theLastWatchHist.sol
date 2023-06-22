@@ -3,12 +3,14 @@ pragma solidity ^0.8.19;
 import "openzeppelin/token/ERC721/ERC721Upgradeable.sol";
 import "openzeppelin/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import "openzeppelin/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol";
+import "openzeppelin/token/ERC721/extensions/ERC721BurnableUpgradeable.sol";
 
-contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable {
+contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, ERC721BurnableUpgradeable {
   function initialize(string memory name, string memory symbol) external initializer {
     __ERC721_init(name, symbol);
     __ERC721Enumerable_init();
     __ERC721URIStorage_init();
+    __ERC721Burnable_init();
   }
 
   function mint(uint256 tokenId, string memory tokenURI) external {
@@ -16,13 +18,6 @@ contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC
 
     _safeMint(msg.sender, tokenId);
     _setTokenURI(tokenId, tokenURI);
-  }
-
-  function burn(uint256 tokenId) external {
-    address owner = ownerOf(tokenId);
-    require(owner == msg.sender, "TheLastWatchHist: only owner can burn this token");
-
-    _burn(tokenId);
   }
 
   // The following functions are overrides required by Solidity to solve inheritance ambiguity
