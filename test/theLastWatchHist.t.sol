@@ -38,6 +38,11 @@ contract TheLastWatchHistTest is Test {
     assertEq(proxiedTLWH.symbol(), "TLWH");
   }
 
+  function testImplementationUninitializable() public {
+    vm.expectRevert("Initializable: contract is already initialized");
+    tLWH.initialize("TheLastWatchHist", "TLWH");
+  }
+
   function testMintBurn() public {
     // Mint
     vm.prank(user1);
