@@ -5,18 +5,30 @@ import "openzeppelin/token/ERC721/ERC721Upgradeable.sol";
 import "openzeppelin/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import "openzeppelin/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol";
 import "openzeppelin/token/ERC721/extensions/ERC721BurnableUpgradeable.sol";
+import "openzeppelin/access/OwnableUpgradeable.sol";
+import "openzeppelin/proxy/utils/Initializable.sol";
+import "openzeppelin/proxy/utils/UUPSUpgradeable.sol";
 import "openzeppelin/utils/CountersUpgradeable.sol";
 
-contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, ERC721BurnableUpgradeable {
+contract TheLastWatchHist is
+  ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, ERC721BurnableUpgradeable,
+  OwnableUpgradeable, UUPSUpgradeable
+{
   using CountersUpgradeable for CountersUpgradeable.Counter;
 
   CountersUpgradeable.Counter private _tokenIdCounter;
+
+  constructor () {
+    _disableInitializers();
+  }
 
   function initialize(string memory name, string memory symbol) external initializer {
     __ERC721_init(name, symbol);
     __ERC721Enumerable_init();
     __ERC721URIStorage_init();
     __ERC721Burnable_init();
+    __Ownable_init();
+    __UUPSUpgradeable_init();
   }
 
   function mint(string memory _tokenURI) external {
@@ -43,6 +55,13 @@ contract TheLastWatchHist is ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC
     require(from == address(0) || to == address(0), "TheLastWatchHist: Token is soul-bound and not transferable");
     super._beforeTokenTransfer(from, to, tokenId, batchSize);
   }
+
+  // For UUPS Proxy
+  function _authorizeUpgrade(address newImplementation)
+    internal
+    onlyOwner
+    override
+  {}
 
   // The following functions are overrides required by Solidity to solve inheritance ambiguity
   function _burn(uint256 tokenId)
