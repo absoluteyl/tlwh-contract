@@ -1,6 +1,6 @@
 # the Last Watch Hist Contract
 
-## Preqrequisites
+## Prerequisites
 
 - solidity ^0.8.0
 - foundry ^0.2.0
