@@ -14,8 +14,8 @@ contract TLWHTest is Test {
   function setUp() public virtual {
     tLWH = new TLWHToken();
     proxy = new TLWHProxy(
-      abi.encodeWithSignature("initialize(string,string)", "TheLastWatchHist", "TLWH"),
-      address(tLWH)
+      address(tLWH),
+      abi.encodeWithSignature("initialize(string,string)", "TheLastWatchHist", "TLWH")
     );
     proxiedTLWH = TLWHToken(address(proxy));
   }
