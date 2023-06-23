@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "openzeppelin/token/ERC721/ERC721Upgradeable.sol";
-import "openzeppelin/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
-import "openzeppelin/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol";
-import "openzeppelin/token/ERC721/extensions/ERC721BurnableUpgradeable.sol";
-import "openzeppelin/access/OwnableUpgradeable.sol";
-import "openzeppelin/proxy/utils/Initializable.sol";
-import "openzeppelin/proxy/utils/UUPSUpgradeable.sol";
-import "openzeppelin/utils/CountersUpgradeable.sol";
+import "openzeppelin-contracts-upgradeable/contracts/token/ERC721/ERC721Upgradeable.sol";
+import "openzeppelin-contracts-upgradeable/contracts/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
+import "openzeppelin-contracts-upgradeable/contracts/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol";
+import "openzeppelin-contracts-upgradeable/contracts/token/ERC721/extensions/ERC721BurnableUpgradeable.sol";
+import "openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol";
+import "openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol";
+import "openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol";
+import "openzeppelin-contracts-upgradeable/contracts/utils/CountersUpgradeable.sol";
 
 contract TLWHToken is
   ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, ERC721BurnableUpgradeable,
