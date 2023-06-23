@@ -66,9 +66,11 @@ $CONTRACT_ADDRESS \
 src/theLastWatchHist.sol:TheLastWatchHist
 ```
 
-## Contract Specifications
+## Specifications
 
-tLWH is designed to be a soul-bound NFT collection, so:
+### Soul-bound NFT
+
+tLWH token is designed to be a soul-bound NFT collection, so:
 
 1. Only one tLWH NFT is allowed to mint per EOA address.
 2. tLWH NFT cannot be transferred to another address.
