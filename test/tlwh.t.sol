@@ -1,14 +1,14 @@
 pragma solidity ^0.8.19;
 
 import "forge-std/Test.sol";
-import "src/theLastWatchHist.sol";
-import "src/theLastWatchHistProxy.sol";
+import "src/tlwhToken.sol";
+import "src/tlwhProxy.sol";
 
 contract TLWHTest is Test {
-  TheLastWatchHistProxy public proxy;
+  TLWHProxy public proxy;
 
-  TheLastWatchHist public tLWH;
-  TheLastWatchHist public proxiedTLWH;
+  TLWHToken public tLWH;
+  TLWHToken public proxiedTLWH;
 
   address public user1;
   address public user2;
@@ -17,12 +17,12 @@ contract TLWHTest is Test {
   string  public ipfsId2;
 
   function setUp() public {
-    tLWH = new TheLastWatchHist();
-    proxy = new TheLastWatchHistProxy(
+    tLWH = new TLWHToken();
+    proxy = new TLWHProxy(
       abi.encodeWithSignature("initialize(string,string)", "TheLastWatchHist", "TLWH"),
       address(tLWH)
     );
-    proxiedTLWH = TheLastWatchHist(address(proxy));
+    proxiedTLWH = TLWHToken(address(proxy));
 
     user1 = makeAddr("user1");
     user2 = makeAddr("user2");
