@@ -68,6 +68,16 @@ src/theLastWatchHist.sol:TheLastWatchHist
 
 ## Specifications
 
+### Proxy Pattern
+
+tLWH uses UUPS Proxy Pattern
+
+```mermaid
+flowchart LR
+  Proxy -- Current --> TokenV1
+  Proxy -. In the future.-> TokenV2
+```
+
 ### Soul-bound NFT
 
 tLWH token is designed to be a soul-bound NFT collection, so:
