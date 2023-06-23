@@ -4,7 +4,7 @@ import "forge-std/Test.sol";
 import "src/theLastWatchHist.sol";
 import "src/theLastWatchHistProxy.sol";
 
-contract TheLastWatchHistTest is Test {
+contract TLWHTest is Test {
   TheLastWatchHistProxy public proxy;
 
   TheLastWatchHist public tLWH;

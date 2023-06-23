@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-contract TheLastWatchHistProxy {
+contract TLWHProxy {
   constructor(bytes memory constructData, address contractLogic) {
     assembly { // solium-disable-line
       sstore(

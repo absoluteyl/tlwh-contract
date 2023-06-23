@@ -10,7 +10,7 @@ import "openzeppelin/proxy/utils/Initializable.sol";
 import "openzeppelin/proxy/utils/UUPSUpgradeable.sol";
 import "openzeppelin/utils/CountersUpgradeable.sol";
 
-contract TheLastWatchHist is
+contract TLWHToken is
   ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, ERC721BurnableUpgradeable,
   OwnableUpgradeable, UUPSUpgradeable
 {
