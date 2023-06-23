@@ -12,5 +12,8 @@ contract TLWHProxyTest is TLWHTest {
   function testImplementationUninitializable() public {
     vm.expectRevert("Initializable: contract is already initialized");
     tLWH.initialize("TheLastWatchHist", "TLWH");
+
+    assertEq(tLWH.name(), "");
+    assertEq(tLWH.symbol(), "");
   }
 }
