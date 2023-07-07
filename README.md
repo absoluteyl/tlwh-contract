@@ -7,7 +7,7 @@
 
 ## Development
 
-### Clone this project from github
+### Clone this project from Github
 
 ```bash
 git clone git@github.com:absoluteyl/tlwh-contract.git
