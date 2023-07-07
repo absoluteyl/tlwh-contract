@@ -84,3 +84,24 @@ tLWH token is designed to be a soul-bound NFT collection, so:
 
 1. Only one tLWH NFT is allowed to mint per EOA address.
 2. tLWH NFT cannot be transferred to another address.
+
+### NFT Metadata
+
+tLWH token's metadata is stored in IPFS, and the IPFS CID is stored in the contract as tokenURI. The metadata is a JSON file with the following structure:
+
+```json
+{
+  "id": "$TOKEN_ID",
+  "name": "The Last Watch Hist #$TOKEN_ID",
+  "owner": "$OWNER_ADDRESS",
+  "image": "ipfs://$IPFS_ID_OF_IMAGE",
+}
+
+// example
+{
+  "id": "1",
+  "name": "The Last Watch Hist #1",
+  "owner": "0x6CA6d1e2D5347Bfab1d91e883F1915560e09129D",
+  "image": "ipfs://QmNmfAqjiQgdLJscpM3FufbaXY9QEqWZiWqDTbsrUjSKDR",
+}
+```
